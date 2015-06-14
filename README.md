@@ -22,4 +22,4 @@ It was created to clean up my *Downloads* folder from time to time.
 
 This started out in bash. However, I switched to python as things became way to
 complicated in bash and the program has already twice the functionality with
-half the lines of code in it's initial state.
+half the lines of code in its initial state.
