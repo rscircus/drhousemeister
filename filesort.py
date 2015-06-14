@@ -28,14 +28,7 @@ helper()
 direntries = os.listdir('./')
 
 #
-## Create list of file extensions - with corresponding filenames
-#
-# e.g.:
-#
-# xls(x)
-# txt,mkd,doc(x)
-# zip,rar,tgz
-#
+# Create list of file extensions - with corresponding filenames
 
 # Sort out directories:
 files = []
@@ -58,35 +51,28 @@ print "Filetypes identified:"
 print extensions
 print ""
 
-
-## Create dirs by extension
+#
+# Create dirs by extension
 # - if not possible: use extension in uppercase
 # - convert space to under
 #
-# e.g.:
-#
-# xls(x)         -> TABLES
-# txt,mkd,doc(x) -> DOCUMENT
-# zip,rar,tgz    -> ARCHIVES
-#
 
-# From extensions create directories:
 # This is pretty hacky. Most file managers sort the _ ahead of everything else
-
-docs = {'.doc','.docx', '.odt', '.txt'}
-tables = {'.xls', '.xlsx'}
-images = {'.gif', '.jpg'}
+docs = {'.tex', '.doc', '.dot', '.docm' '.docx', '.rtf', '.odt', '.odm', '.ott', '.txt'}
+spreadsheets = {'.ods', 'ots', '.xls', '.xlsx', '.csv'}
+images = {'.png', '.gif', '.jpg', '.jpeg', '.svg'}
 archives = {'.zip', '.gz' }
+#videos = {'.avi', '.mp4' '.mpg', '.mkv'}
 
 for doc in docs:
     if doc in extensions:
         if not os.path.exists('_documents'):
             os.mkdir('_documents')
 
-for table in tables:
-    if table in extensions:
-        if not os.path.exists('_tables'):
-            os.mkdir('_tables')
+for spreadsheet in spreadsheets:
+    if spreadsheet in extensions:
+        if not os.path.exists('_spreadsheets'):
+            os.mkdir('_spreadsheets')
 
 for image in images:
     if image in extensions:
@@ -104,12 +90,11 @@ if '.pdf' in extensions:
 
 
 # Move files into dirs
-
 for file in files:
     if file[1].lower() in docs:
         sh.move(file[0]+file[1], '_documents/'+file[0]+file[1])
-    if file[1].lower() in tables:
-        sh.move(file[0]+file[1], '_tables/'+file[0]+file[1])
+    if file[1].lower() in spreadsheets:
+        sh.move(file[0]+file[1], '_spreadsheets/'+file[0]+file[1])
     if file[1].lower() in images:
         sh.move(file[0]+file[1], '_images/'+file[0]+file[1])
     if file[1].lower() in archives:
@@ -118,19 +103,19 @@ for file in files:
         sh.move(file[0]+file[1], '_pdfs/'+file[0]+file[1])
 
 
-## If more than one "year" present than create folders with year
+#TODO: If more than one "year" present than create folders with year
 #
 # e.g.:
 #
-# ~/TABLES/2013
-# ~/TABLES/2014
-# ~/TABLES/2015
+# ~/_spreadsheets/2013
+# ~/_spreadsheets/2014
+# ~/_spreadsheets/2015
 #
 #
-## If keyword present -> create folder with keyword
+#TODO: If keyword present -> create folder with keyword
 # - sort files into keyword
 #
 # e.g.:
 #
-# ~/TABLES/KEYWORD/2013
-# ~/TABLES/KEYWORD/2014
+# ~/_spreadsheets/KEYWORD/2013
+# ~/_spreadsheets/KEYWORD/2014
