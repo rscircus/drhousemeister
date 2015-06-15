@@ -61,7 +61,7 @@ images = {'.png', '.gif', '.jpg', '.jpeg', '.svg', '.xcf'}
 spreadsheets = {'.ods', 'ots', '.xls', '.xlsx', '.csv'}
 pdfs = {'.pdf', '.skim'}
 presentations = {'.ppt', '.pptx', '.odp', '.otp', '.pez', '.keynote'}
-videos = {'.avi', '.mp4', '.mpg', '.mkv'}
+videos = {'.avi', '.mp4', '.mpg', '.mkv', '.flv'}
 
 for archive in archives:
     if archive in extensions:
