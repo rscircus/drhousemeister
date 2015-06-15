@@ -20,6 +20,7 @@ ln -s /path/to/drhousemeister/filesort.py
 These folders are created in the current directory and contain, what
 you might expect:
 
+* _audios - *mp3 so far*
 * _archives - *most common ones*
 * _databases - sql, json
 * _documents - *linux, win*
@@ -33,13 +34,13 @@ you might expect:
 
 ### [0.1.1] - 2015.06.15
 Added:
-- filesort.py - presentations, archives, databases
+- filesort.py - presentations, archives, databases, audio, var. extensions
 
 Fixed:
 - filesort.py - .docx extension bug in set
 
 Changed:
-- filesort.py - pdfs, supported files
+- filesort.py - pdfs, extensions
 
 ### [0.1] - 2015.06.14
 Created:

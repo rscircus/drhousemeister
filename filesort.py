@@ -64,6 +64,12 @@ spreadsheets = {'.ods', 'ots', '.xls', '.xlsx', '.csv'}
 dfs = {'.pdf', '.ps', '.skim', '.djvu', '.epub'}
 presentations = {'.ppt', '.pptx', '.odp', '.otp', '.pez', '.keynote', '.key'} #TODO: The '.key' file might be a problem
 videos = {'.avi', '.mp4', '.mpg', '.mkv', '.flv', '.mov'}
+audios = {'.mp3'}
+
+for audio in audios:
+    if audio in extensions:
+        if not os.path.exists('_audios'):
+            os.mkdir('_audios')
 
 for archive in archives:
     if archive in extensions:
@@ -108,6 +114,8 @@ for video in videos:
 
 # Move files into dirs
 for file in files:
+    if file[1].lower() in audios:
+        sh.move(file[0]+file[1], '_audios/'+file[0]+file[1])
     if file[1].lower() in archives:
         sh.move(file[0]+file[1], '_archives/'+file[0]+file[1])
     if file[1].lower() in databases:
