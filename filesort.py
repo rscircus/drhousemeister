@@ -14,6 +14,8 @@ def helper():
     print ""
     print "This program creates folders containing files of one kind."
     print "With the kind defining the folder's name."
+    print ""
+    print "Currently it has no options and only works on the local dir ;-)"
 
 # inform the user:
 helper()

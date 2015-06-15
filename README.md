@@ -20,28 +20,28 @@ you might expect:
 * _databases - sql, json
 * _documents - *linux, win*
 * _images - *most common ones*
-* _pdfs - *including skim<sup>1</sup> notes*
+* _dfs - pdf (*including skim<sup>1</sup> notes*), ps, odf
 * _presentations - *linux, win, mac*
 * _tables - *linux, win*
 
 It was created to clean up my *Downloads* folder from time to time.
 
-
+_
 
 ## Changelog:
 
 ### [0.1.1] - 2015.06.15
-#### Added
+Added:
 - filesort.py - presentations, archives, databases
 
-#### Fixed
+Fixed:
 - filesort.py - .docx extension bug in set
 
-#### Changed
+Changed:
 - filesort.py - pdfs, supported files
 
 ### [0.1] - 2015.06.14
-#### Created
+Created:
 - filesort.py - refile files as described in read.me
 
 
