@@ -59,7 +59,7 @@ databases = {'.sql', '.json'}
 docs = {'.tex', '.doc', '.dot', '.docm', '.docx', '.rtf', '.odt', '.odm', '.ott', '.txt'}
 images = {'.png', '.gif', '.jpg', '.jpeg', '.svg', '.xcf'}
 spreadsheets = {'.ods', 'ots', '.xls', '.xlsx', '.csv'}
-pdfs = {'.pdf', '.skim'}
+dfs = {'.pdf', '.ps', '.skim'}
 presentations = {'.ppt', '.pptx', '.odp', '.otp', '.pez', '.keynote'}
 videos = {'.avi', '.mp4', '.mpg', '.mkv', '.flv'}
 
@@ -88,10 +88,10 @@ for spreadsheet in spreadsheets:
         if not os.path.exists('_spreadsheets'):
             os.mkdir('_spreadsheets')
 
-for pdf in pdfs:
-    if pdf in extensions:
-        if not os.path.exists('_pdfs'):
-            os.mkdir('_pdfs')
+for df in dfs:
+    if df in extensions:
+        if not os.path.exists('_dfs'):
+            os.mkdir('_dfs')
 
 for presentation in presentations:
     if presentation in extensions:
@@ -118,8 +118,8 @@ for file in files:
         sh.move(file[0]+file[1], '_spreadsheets/'+file[0]+file[1])
     if file[1].lower() in presentations:
         sh.move(file[0]+file[1], '_presentations/'+file[0]+file[1])
-    if file[1].lower() in pdfs:
-        sh.move(file[0]+file[1], '_pdfs/'+file[0]+file[1])
+    if file[1].lower() in dfs:
+        sh.move(file[0]+file[1], '_dfs/'+file[0]+file[1])
     if file[1].lower() in videos:
         sh.move(file[0]+file[1], '_videos/'+file[0]+file[1])
 
