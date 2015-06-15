@@ -3,6 +3,8 @@
 import os
 import shutil as sh
 
+debug = False
+
 def helper():
 
     print ""
@@ -36,6 +38,8 @@ for direntry in direntries:
         curFile=os.path.splitext(direntry)
         if curFile[1]!='':
             files.append(curFile)
+            if debug:
+                print curFile
 
 # Find unique extensions:
 extensions = set()
@@ -58,11 +62,13 @@ print ""
 #
 
 # This is pretty hacky. Most file managers sort the _ ahead of everything else
-docs = {'.tex', '.doc', '.dot', '.docm' '.docx', '.rtf', '.odt', '.odm', '.ott', '.txt'}
+docs = {'.tex', '.doc', '.dot', '.docm', '.docx', '.rtf', '.odt', '.odm', '.ott', '.txt'}
 spreadsheets = {'.ods', 'ots', '.xls', '.xlsx', '.csv'}
-images = {'.png', '.gif', '.jpg', '.jpeg', '.svg'}
-archives = {'.zip', '.gz' }
+images = {'.png', '.gif', '.jpg', '.jpeg', '.svg', '.xcf'}
+archives = {'.zip', '.gz', '.tgz', '.rar' }
+presentations = {'.ppt', '.pptx', '.odp', '.otp', '.pez', '.keynote'}
 #videos = {'.avi', '.mp4' '.mpg', '.mkv'}
+pdfs = {'.pdf', '.skim'}
 
 for doc in docs:
     if doc in extensions:
@@ -84,9 +90,15 @@ for archive in archives:
         if not os.path.exists('_archives'):
             os.mkdir('_archives')
 
-if '.pdf' in extensions:
-    if not os.path.exists('_pdfs'):
-        os.mkdir('_pdfs')
+for presentation in presentations:
+    if presentation in extensions:
+        if not os.path.exists('_presentations'):
+            os.mkdir('_presentations')
+
+for pdf in pdfs:
+    if pdf in extensions:
+        if not os.path.exists('_pdfs'):
+            os.mkdir('_pdfs')
 
 
 # Move files into dirs
@@ -99,7 +111,9 @@ for file in files:
         sh.move(file[0]+file[1], '_images/'+file[0]+file[1])
     if file[1].lower() in archives:
         sh.move(file[0]+file[1], '_archives/'+file[0]+file[1])
-    if file[1] == '.pdf':
+    if file[1].lower() in presentations:
+        sh.move(file[0]+file[1], '_presentations/'+file[0]+file[1])
+    if file[1].lower() in pdfs:
         sh.move(file[0]+file[1], '_pdfs/'+file[0]+file[1])
 
 
