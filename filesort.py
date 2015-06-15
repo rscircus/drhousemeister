@@ -119,9 +119,9 @@ for file in files:
     if file[1].lower() in presentations:
         sh.move(file[0]+file[1], '_presentations/'+file[0]+file[1])
     if file[1].lower() in pdfs:
-        sh.move(file[0]+file[1], '_pdfuments/'+file[0]+file[1])
+        sh.move(file[0]+file[1], '_pdfs/'+file[0]+file[1])
     if file[1].lower() in videos:
-        sh.move(file[0]+file[1], '_videouments/'+file[0]+file[1])
+        sh.move(file[0]+file[1], '_videos/'+file[0]+file[1])
 
 
 #TODO: If more than one "year" present than create folders with year
