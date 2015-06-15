@@ -3,6 +3,9 @@
 This bunch of scripts **organize/sort/refile the files in your current
 folder** into newly created folders according to their extensions.
 
+It was created to clean up my *Downloads* folder from time to time.
+
+
 ## Usage:
 
 ```
@@ -10,6 +13,7 @@ cd /path/to/dir/to/be/cleaned
 ln -s /path/to/drhousemeister/filesort.py
 ./filesort.py
 ```
+
 
 ## Supported files:
 
@@ -24,9 +28,6 @@ you might expect:
 * _presentations - *linux, win, mac*
 * _tables - *linux, win*
 
-It was created to clean up my *Downloads* folder from time to time.
-
-_
 
 ## Changelog:
 
@@ -51,6 +52,7 @@ This started out in bash while scratching my own itch. However, I
 switched to python as things became way to complicated in bash and the
 program has already twice the functionality with half the lines of code
 in its initial state.
+
 
 ## Footnotes:
 
