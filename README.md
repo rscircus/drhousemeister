@@ -3,7 +3,18 @@
 This bunch of scripts **organize/sort/refile the files in your current
 folder** by their extension into newly created folders named as follows:
 
+## Usage:
+
+```
+cd /path/to/dir/to/be/cleaned
+ln -s /path/to/drhousemeister/filesort.py
+./filesort.py
+```
+
+## Supported files:
+
 * _archives - *most common ones*
+* _databases - sql, json
 * _documents - *linux, win*
 * _images - *most common ones*
 * _pdfs - *including skim<sup>1</sup> notes*
@@ -13,11 +24,12 @@ folder** by their extension into newly created folders named as follows:
 It was created to clean up my *Downloads* folder from time to time.
 
 
-## Changelog
+
+## Changelog:
 
 ### [0.1.1] - 2015.06.15
 #### Added
-- filesort.py - presentations, archives
+- filesort.py - presentations, archives, databases
 
 #### Fixed
 - filesort.py - .docx extension bug in set
@@ -30,7 +42,7 @@ It was created to clean up my *Downloads* folder from time to time.
 - filesort.py - refile files as described in read.me
 
 
-## Genesis Note
+## Genesis Note:
 
 This started out in bash while scratching my own itch. However, I
 switched to python as things became way to complicated in bash and the
