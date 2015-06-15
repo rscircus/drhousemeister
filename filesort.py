@@ -56,14 +56,14 @@ print ""
 #
 
 # This is pretty hacky. Most file managers sort the _ ahead of everything else
-archives = {'.zip', '.gz', '.tgz', '.rar' }
+archives = {'.zip', '.gz', '.tgz', '.rar', '.dmg', '.tar', '.pkg'}
 databases = {'.sql', '.json'}
-docs = {'.tex', '.doc', '.dot', '.docm', '.docx', '.rtf', '.odt', '.odm', '.ott', '.txt'}
-images = {'.png', '.gif', '.jpg', '.jpeg', '.svg', '.xcf'}
+docs = {'.tex', '.doc', '.dot', '.docm', '.docx', '.rtf', '.odt', '.odm', '.ott', '.txt', '.md', '.html', '.htm'}
+images = {'.png', '.gif', '.jpg', '.jpeg', '.svg', '.xcf', '.eps'}
 spreadsheets = {'.ods', 'ots', '.xls', '.xlsx', '.csv'}
-dfs = {'.pdf', '.ps', '.skim'}
-presentations = {'.ppt', '.pptx', '.odp', '.otp', '.pez', '.keynote'}
-videos = {'.avi', '.mp4', '.mpg', '.mkv', '.flv'}
+dfs = {'.pdf', '.ps', '.skim', '.djvu', '.epub'}
+presentations = {'.ppt', '.pptx', '.odp', '.otp', '.pez', '.keynote', '.key'} #TODO: The '.key' file might be a problem
+videos = {'.avi', '.mp4', '.mpg', '.mkv', '.flv', '.mov'}
 
 for archive in archives:
     if archive in extensions:
