@@ -1,7 +1,7 @@
 # Dr. House Meister
 
 This bunch of scripts **organize/sort/refile the files in your current
-folder** by their extension into newly created folders named as follows:
+folder** into newly created folders according to their extensions.
 
 ## Usage:
 
@@ -12,6 +12,9 @@ ln -s /path/to/drhousemeister/filesort.py
 ```
 
 ## Supported files:
+
+These folders are created in the current directory and contain, what
+you might expect:
 
 * _archives - *most common ones*
 * _databases - sql, json
