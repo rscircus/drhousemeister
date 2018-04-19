@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 import os
 import shutil as sh
+import collections
 
 # verbose output:
 debug = False
@@ -26,22 +27,21 @@ direntries = os.listdir('./')
 #
 # Create list of file extensions - with corresponding filenames
 #
-# Sort out directories:
+
+# Remove directories from current direntries
 files = []
 for direntry in direntries:
-        curFile=os.path.splitext(direntry)
-        if curFile[1]!='':
+        curFile = os.path.splitext(direntry)
+        if curFile[1] != '':
             files.append(curFile)
             if debug:
                 print(curFile)
 
-# Find unique extensions:
+# Find unique extensions
 extensions = set()
 for s in files:
     if s[1] not in extensions:
         extensions.add(s[1])
-
-# Lower case:
 extensions = [x.lower() for x in extensions]
 
 print("")
@@ -55,84 +55,36 @@ print("")
 # - convert space to under
 #
 
-# This is pretty hacky. Most file managers sort the _ ahead of everything else
-archives = {'.zip', '.gz', '.tgz', '.rar', '.dmg', '.tar', '.pkg'}
-databases = {'.sql', '.json'}
-docs = {'.tex', '.doc', '.dot', '.docm', '.docx', '.rtf', '.odt', '.odm', '.ott', '.txt', '.md', '.html', '.htm'}
-images = {'.png', '.gif', '.jpg', '.jpeg', '.svg', '.xcf', '.eps'}
-spreadsheets = {'.ods', 'ots', '.xls', '.xlsx', '.csv'}
-dfs = {'.pdf', '.ps', '.skim', '.djvu', '.epub'}
-presentations = {'.ppt', '.pptx', '.odp', '.otp', '.pez', '.keynote', '.key'} #TODO: The '.key' file might be a problem
-videos = {'.avi', '.mp4', '.mpg', '.mkv', '.flv', '.mov'}
-audios = {'.mp3'}
+# Prepare folders where files with extensions will be sorted into
+folders = collections.defaultdict()
 
-for audio in audios:
-    if audio in extensions:
-        if not os.path.exists('_audios'):
-            os.mkdir('_audios')
+folders['archives'] = {'.zip', '.gz', '.tgz', '.rar', '.dmg', '.tar', '.pkg'}
+folders['databases'] = {'.sql', '.json'}
+folders['docs'] = {'.tex', '.doc', '.dot', '.docm', '.docx', '.rtf', '.odt', '.odm', '.ott', '.txt', '.md', '.html', '.htm'}
+folders['images'] = {'.png', '.gif', '.jpg', '.jpeg', '.svg', '.xcf', '.eps'}
+folders['spreadsheets'] = {'.ods', 'ots', '.xls', '.xlsx', '.csv'}
+folders['dfs'] = {'.pdf', '.ps', '.skim', '.djvu', '.epub'}
+folders['presentations'] = {'.ppt', '.pptx', '.odp', '.otp', '.pez', '.keynote', '.key'}
+folders['videos'] = {'.avi', '.mp4', '.mpg', '.mkv', '.flv', '.mov'}
+folders['audios'] = {'.mp3', '.wav', '.ogg'}
 
-for archive in archives:
-    if archive in extensions:
-        if not os.path.exists('_archives'):
-            os.mkdir('_archives')
+if debug:
+    for foldername, extset in folders.items():
+        print("### " + foldername)
+        for ext in extset:
+            print(ext, end="")
+        print("")
 
-for database in databases:
-    if database in extensions:
-        if not os.path.exists('_databases'):
-            os.mkdir('_databases')
-
-for doc in docs:
-    if doc in extensions:
-        if not os.path.exists('_documents'):
-            os.mkdir('_documents')
-
-for image in images:
-    if image in extensions:
-        if not os.path.exists('_images'):
-            os.mkdir('_images')
-
-for spreadsheet in spreadsheets:
-    if spreadsheet in extensions:
-        if not os.path.exists('_spreadsheets'):
-            os.mkdir('_spreadsheets')
-
-for df in dfs:
-    if df in extensions:
-        if not os.path.exists('_dfs'):
-            os.mkdir('_dfs')
-
-for presentation in presentations:
-    if presentation in extensions:
-        if not os.path.exists('_presentations'):
-            os.mkdir('_presentations')
-
-for video in videos:
-    if video in extensions:
-        if not os.path.exists('_videos'):
-            os.mkdir('_videos')
-
-
-# Move files into dirs
-for file in files:
-    if file[1].lower() in audios:
-        sh.move(file[0]+file[1], '_audios/'+file[0]+file[1])
-    if file[1].lower() in archives:
-        sh.move(file[0]+file[1], '_archives/'+file[0]+file[1])
-    if file[1].lower() in databases:
-        sh.move(file[0]+file[1], '_databases/'+file[0]+file[1])
-    if file[1].lower() in docs:
-        sh.move(file[0]+file[1], '_documents/'+file[0]+file[1])
-    if file[1].lower() in images:
-        sh.move(file[0]+file[1], '_images/'+file[0]+file[1])
-    if file[1].lower() in spreadsheets:
-        sh.move(file[0]+file[1], '_spreadsheets/'+file[0]+file[1])
-    if file[1].lower() in presentations:
-        sh.move(file[0]+file[1], '_presentations/'+file[0]+file[1])
-    if file[1].lower() in dfs:
-        sh.move(file[0]+file[1], '_dfs/'+file[0]+file[1])
-    if file[1].lower() in videos:
-        sh.move(file[0]+file[1], '_videos/'+file[0]+file[1])
-
+for foldername, extset in folders.items():
+    for ext in extset:
+        # Create directories for found files/extensions
+        if ext in extensions:
+            if not os.path.exists('_'+foldername):
+                os.mkdir('_'+foldername)
+    # Move files into folders
+    for file in files:
+        if file[1].lower() in extset:
+            sh.move(file[0]+file[1], '_'+foldername+'/'+file[0]+file[1])
 
 #TODO: If more than one "year" present than create folders with year
 #
