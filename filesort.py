@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 # -*- coding: utf-8 -*-
 import os
 import shutil as sh
@@ -7,15 +7,15 @@ import shutil as sh
 debug = False
 
 def helper():
-    print ""
-    print "Usage: python filesort.py [OPTION] [DIR]"
-    print "Sort files from DIR (the current directory by default) into"
-    print "subdirectories."
-    print ""
-    print "This program creates folders containing files of one kind."
-    print "With the kind defining the folder's name."
-    print ""
-    print "Currently it has no options and only works on the local dir ;-)"
+    print("")
+    print("Usage: python filesort.py [OPTION] [DIR]")
+    print("Sort files from DIR (the current directory by default) into")
+    print("subdirectories.")
+    print("")
+    print("This program creates folders containing files of one kind.")
+    print("With the kind defining the folder's name.")
+    print("")
+    print("Currently it has no options and only works on the local dir ;-)")
 
 # inform the user:
 helper()
@@ -33,7 +33,7 @@ for direntry in direntries:
         if curFile[1]!='':
             files.append(curFile)
             if debug:
-                print curFile
+                print(curFile)
 
 # Find unique extensions:
 extensions = set()
@@ -44,10 +44,10 @@ for s in files:
 # Lower case:
 extensions = [x.lower() for x in extensions]
 
-print ""
-print "Filetypes identified:"
-print extensions
-print ""
+print("")
+print("Filetypes identified:")
+print(extensions)
+print("")
 
 #
 # Create dirs by extension
